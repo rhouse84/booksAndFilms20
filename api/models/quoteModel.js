@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 
 // Quote Schema
 var quoteSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	bookId:{
-		type: Number,
+		type: String,
 		required: false
 	},
 	bookTitle:{
@@ -17,7 +17,7 @@ var quoteSchema = mongoose.Schema({
 		required: false
 	},
 	filmId:{
-		type: Number,
+		type: String,
 		required: false
 	},
 	filmTitle:{

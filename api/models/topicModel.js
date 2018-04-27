@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 
 // Topic Schema
 var topicSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	description:{

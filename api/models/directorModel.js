@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 
 // Director Schema
 var directorSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	name:{

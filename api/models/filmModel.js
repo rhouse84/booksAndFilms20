@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 
 // Film Schema
 var filmSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	directorId:{
-		type: Number,
+		type: String,
 		required: true
 	},
 	directorName:{
@@ -22,7 +22,7 @@ var filmSchema = mongoose.Schema({
 	},
 	notes: {
 		type: String,
-		required: true
+		required: false
 	},
 	stars:{
 		type: String,
@@ -41,7 +41,7 @@ var filmSchema = mongoose.Schema({
 		required: true
 	},
 	topicId:{
-		type: Number,
+		type: String,
 		required: false
 	},
 	topicDesc:{

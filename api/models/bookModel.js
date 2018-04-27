@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 
 // Book Schema
 var bookSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	authorId:{
-		type: Number,
+		type: String,
 		required: true
 	},
 	authorName:{
@@ -41,7 +41,7 @@ var bookSchema = mongoose.Schema({
 		required: true
 	},
 	topicId:{
-		type: Number,
+		type: String,
 		required: false
 	},
 	topicDesc:{

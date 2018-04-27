@@ -40,3 +40,4 @@ Thumbs.db
 ######################
 *.env
 node_modules/*
+*.txt

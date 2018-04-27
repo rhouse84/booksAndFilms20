@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 
 // Author Schema
 var authorSchema = mongoose.Schema({
-	id:{
-		type: Number,
+	oldId:{
+		type: String,
 		required: true
 	},
 	name:{

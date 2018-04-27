@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const app = express();
+const server = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
@@ -9,18 +9,20 @@ const passport = require('passport');
 const auth = require('./auth');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
+const cors = require('cors');
 require('dotenv').config();
 
 auth(passport);
-app.use(passport.initialize());
 
-app.use(bodyParser.json());
+server.use(passport.initialize());
+server.use(bodyParser.json());
+server.use(cors());
 
-app.use(cookieSession({
+server.use(cookieSession({
     name: 'session',
     keys: [process.env.COOKIEKEY]
 }));
-app.use(cookieParser());
+server.use(cookieParser());
 
 var Author = require('./api/models/authorModel');
 var Book = require('./api/models/bookModel');
@@ -34,9 +36,9 @@ mongoose.connect(config.getDbConnectionString());
 var db = mongoose.connection;
 
 var router = require('./api/routes');
-app.use(router);
+server.use(router);
 
 const port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(port);
 console.log('Running on port ', port);
 

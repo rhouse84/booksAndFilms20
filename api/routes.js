@@ -5,7 +5,8 @@ const auth = require('../auth');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 require('dotenv').config();
-var router = express.Router();
+const router = express.Router();
+const cors = require('cors');
 
 router.get('/auth/google', passport.authenticate('google', {
     scope: ['https://www.googleapis.com/auth/userinfo.email']   
@@ -29,25 +30,25 @@ router.get('/logout', (req, res) => {
 
 //temporary until we get a front end
 //router.get('/', function(req, res) {
-router.use(function(req, res, next) {
-	if (req.session.token) {
-		res.cookie('token', req.session.token);
+//router.use(function(req, res, next) {
+//	if (req.session.token) {
+//		res.cookie('token', req.session.token);
 
-		var currentUserEmail = req.session.passport.user.profile.emails[0].value;
-		if (currentUserEmail === process.env.OWNEREMAIL) {
-			global.readOnly = false;
-		} else {
-			global.readOnly = true;
-		}
+//		var currentUserEmail = req.session.passport.user.profile.emails[0].value;
+//		if (currentUserEmail === process.env.OWNEREMAIL) {
+//			global.readOnly = false;
+//		} else {
+//			global.readOnly = true;
+//		}
 		//res.json({
         //    status: 'session cookie set',
         //    name: req.session.passport.user.profile.name.givenName
 		//});
-        next();
-	} else {
-		res.redirect('/auth/google');
-	}
-});
+//        next();
+//	} else {
+//		res.redirect('/auth/google');
+//	}
+//});
 
 var author = require('./controllers/authorController');
 var book = require('./controllers/bookController');
@@ -55,6 +56,10 @@ var director = require('./controllers/directorController');
 var film = require('./controllers/filmController');
 var topic = require('./controllers/topicController');
 var quote = require('./controllers/quoteController');
+
+//Todo:  Eventually, only all the get requests where global.readOnly = true
+
+
 
 // author routes
 router.get('/api/authors', author.getAuthors);
@@ -65,6 +70,7 @@ router.delete('/api/authors/:_id', author.removeAuthor);
 
 // book routes
 router.get('/api/books', book.getBooks);
+router.get('/api/bookSearch/:_search', book.searchBooks);
 router.post('/api/books', book.addBook);
 router.get('/api/books/:_id', book.getBook);
 router.put('/api/books/:_id', book.updateBook);

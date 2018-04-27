@@ -31,9 +31,9 @@ module.exports.addDirector = function(req, res, next) {
 
 // Update Director
 module.exports.updateDirector = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var director = req.body;
-	Director.findOneAndUpdate(id, director, {}, function(err, director) {
+	Director.update(query, director, {}, function(err, director) {
 		if (err) return next(err);
 		res.json(director);
 	})

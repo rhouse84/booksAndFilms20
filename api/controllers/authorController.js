@@ -31,9 +31,9 @@ module.exports.addAuthor = function(req, res, next) {
 
 // Update Author
 module.exports.updateAuthor = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var author = req.body;
-	Author.findOneAndUpdate(id, author, {}, function(err, author) {
+	Author.update(query, author, {}, function(err, author) {
 		if (err) return next(err);
 		res.json(author);
 	})

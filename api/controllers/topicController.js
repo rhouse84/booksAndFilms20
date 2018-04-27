@@ -31,9 +31,9 @@ module.exports.addTopic = function(req, res, next) {
 
 // Update Topic
 module.exports.updateTopic = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var topic = req.body;
-	Topic.findOneAndUpdate(id, topic, {}, function(err, topic) {
+	Topic.update(query, topic, {}, function(err, topic) {
 		if (err) return next(err);
 		res.json(topic);
 	})

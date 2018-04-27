@@ -40,9 +40,9 @@ module.exports.addFilm = function(req, res, next) {
 
 // Update Film
 module.exports.updateFilm = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var film = req.body;
-	Film.findOneAndUpdate(id, film, {}, function(err, film) {
+	Film.update(query, film, {}, function(err, film) {
 		if (err) return next(err);
 		res.json(film);
 	})

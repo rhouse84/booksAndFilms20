@@ -8,14 +8,13 @@ module.exports.getBooks = function(req, res, next) {
 	Book.find({}, function(err, books) {
 		if (err) return next(err);
 		res.json(books);
-	}).limit(10);
+	}).sort({readDate:-1});
 };
 
 // Search Books via title
 module.exports.searchBooks = function(req, res, next) {
 	var search = req.params._search;
-	var strRegExPattern = '\\b'+search+'\\b';
-	var regx = new RegExp(strRegExPattern, 'gi');
+	var regx = new RegExp(search, 'gi');
 	Book.find({ title: { $regex: regx } }, function(err, books) {
 		if (err) return next(err);
 		res.json(books);
@@ -51,9 +50,9 @@ module.exports.addBook = function(req, res, next) {
 
 // Update Book
 module.exports.updateBook = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var book = req.body;
-	Book.findOneAndUpdate(id, book, {}, function(err, book) {
+	Book.update(query, book, {}, function(err, book) {
 		if (err) return next(err);
 		res.json(book);
 	})

@@ -49,9 +49,9 @@ module.exports.addQuote = function(req, res, next) {
 
 // Update Quote
 module.exports.updateQuote = function(req, res, next) {
-	var id = req.params._id;
+	var query = {_id: req.params._id};
 	var quote = req.body;
-	Quote.findOneAndUpdate(id, quote, {}, function(err, quote) {
+	Quote.update(query, quote, {}, function(err, quote) {
 		if (err) return next(err);
 		res.json(quote);
 	})

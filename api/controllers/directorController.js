@@ -11,6 +11,16 @@ module.exports.getDirectors = function(req, res, next) {
 	});
 };
 
+// Search Directors
+module.exports.searchDirectors = function(req, res, next) {
+	var search = req.params._search;
+	var regx = new RegExp(search, 'gi');
+	Director.find({ name: { $regex: regx } }, function(err, directors) {
+		if (err) return next(err);
+		res.json(directors);
+	});
+};
+
 // Get Single Director
 module.exports.getDirector = function(req, res, next) {
 	var id = req.params._id;

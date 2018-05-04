@@ -63,6 +63,7 @@ var quote = require('./controllers/quoteController');
 
 // author routes
 router.get('/api/authors', author.getAuthors);
+router.get('/api/authorSearch/:_search', author.searchAuthors);
 router.post('/api/authors', author.addAuthor);
 router.get('/api/authors/:_id', author.getAuthor);
 router.put('/api/authors/:_id', author.updateAuthor);
@@ -79,6 +80,7 @@ router.get('/api/booksByAuthor/:_authorId', book.getBooksByAuthor);
 
 // director routes
 router.get('/api/directors', director.getDirectors);
+router.get('/api/directorSearch/:_search', director.searchDirectors);
 router.post('/api/directors', director.addDirector);
 router.get('/api/directors/:_id', director.getDirector);
 router.put('/api/directors/:_id', director.updateDirector);
@@ -86,6 +88,7 @@ router.delete('/api/directors/:_id', director.removeDirector);
 
 // film routes
 router.get('/api/films', film.getFilms);
+router.get('/api/filmSearch/:_search', film.searchFilms);
 router.post('/api/films', film.addFilm);
 router.get('/api/films/:_id', film.getFilm);
 router.put('/api/films/:_id', film.updateFilm);
@@ -94,6 +97,7 @@ router.get('/api/filmsByDirector/:_directorId', film.getFilmsByDirector);
 
 // topic routes
 router.get('/api/topics', topic.getTopics);
+router.get('/api/topicSearch/:_search', topic.searchTopics);
 router.post('/api/topics', topic.addTopic);
 router.get('/api/topics/:_id', topic.getTopic);
 router.put('/api/topics/:_id', topic.updateTopic);

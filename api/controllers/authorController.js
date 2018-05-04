@@ -11,6 +11,16 @@ module.exports.getAuthors = function(req, res, next) {
 	});
 };
 
+// Search Authors
+module.exports.searchAuthors = function(req, res, next) {
+	var search = req.params._search;
+	var regx = new RegExp(search, 'gi');
+	Author.find({ name: { $regex: regx } }, function(err, authors) {
+		if (err) return next(err);
+		res.json(authors);
+	});
+};
+
 // Get Single Author
 module.exports.getAuthor = function(req, res, next) {
 	var id = req.params._id;

@@ -11,6 +11,16 @@ module.exports.getFilms = function(req, res, next) {
 	});
 };
 
+// Search Films
+module.exports.searchFilms = function(req, res, next) {
+	var search = req.params._search;
+	var regx = new RegExp(search, 'gi');
+	Film.find({ title: { $regex: regx } }, function(err, films) {
+		if (err) return next(err);
+		res.json(films);
+	});
+};
+
 // Get Films by Director
 module.exports.getFilmsByDirector = function(req, res, next) {
 	var directorId = req.params._directorId;

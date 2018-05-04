@@ -11,6 +11,16 @@ module.exports.getTopics = function(req, res, next) {
 	});
 };
 
+// Search Topics
+module.exports.searchTopics = function(req, res, next) {
+	var search = req.params._search;
+	var regx = new RegExp(search, 'gi');
+	Topic.find({ description: { $regex: regx } }, function(err, topics) {
+		if (err) return next(err);
+		res.json(topics);
+	});
+};
+
 // Get Single Topic
 module.exports.getTopic = function(req, res, next) {
 	var id = req.params._id;

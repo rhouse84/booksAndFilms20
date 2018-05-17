@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var quoteSchema = mongoose.Schema({
 	oldId:{
 		type: String,
-		required: true
+		required: false
 	},
 	bookId:{
 		type: String,

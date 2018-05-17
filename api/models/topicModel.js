@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var topicSchema = mongoose.Schema({
 	oldId:{
 		type: String,
-		required: true
+		required: false
 	},
 	description:{
 		type: String,

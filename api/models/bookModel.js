@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var bookSchema = mongoose.Schema({
 	oldId:{
 		type: String,
-		required: true
+		required: false
 	},
 	authorId:{
 		type: String,

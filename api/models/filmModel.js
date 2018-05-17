@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var filmSchema = mongoose.Schema({
 	oldId:{
 		type: String,
-		required: true
+		required: false
 	},
 	directorId:{
 		type: String,

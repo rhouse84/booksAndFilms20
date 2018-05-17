@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var directorSchema = mongoose.Schema({
 	oldId:{
 		type: String,
-		required: true
+		required: false
 	},
 	name:{
 		type: String,

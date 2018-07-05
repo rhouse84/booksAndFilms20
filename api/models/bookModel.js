@@ -51,6 +51,10 @@ var bookSchema = mongoose.Schema({
 	userId:{
 		type: Number,
 		required: true
+	},
+	goodReadsUrl:{
+		type: String,
+		required: false
 	}
 });
 

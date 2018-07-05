@@ -8,14 +8,11 @@
   },
   "dependencies": {
     "body-parser": "*",
-    "cookie-parser": "^1.4.3",
-    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "*",
-    "mongoose": "*",
-    "passport": "^0.4.0",
-    "passport-google-oauth-2": "^0.1.1"
+    "google-sign-in": "^3.0.3",
+    "mongoose": "*"
   },
   "author": "",
   "license": "ISC",

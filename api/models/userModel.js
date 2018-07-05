@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 // User Schema
 var userSchema = mongoose.Schema({
-	id:{
+	oldId:{
 		type: Number,
 		required: true
 	},

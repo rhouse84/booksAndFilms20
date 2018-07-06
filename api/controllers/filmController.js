@@ -52,6 +52,7 @@ module.exports.addFilm = function(req, res, next) {
 module.exports.updateFilm = function(req, res, next) {
 	var query = {_id: req.params._id};
 	var film = req.body;
+	console.log('body ', req.body);
 	Film.update(query, film, {}, function(err, film) {
 		if (err) return next(err);
 		res.json(film);

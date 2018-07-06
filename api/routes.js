@@ -51,9 +51,13 @@ router.use(function(req, res, next) {
 	const token = req.headers['token'];
 
     project.verifyToken(token).then((jsonData) => {
-        next();
+    	if (process.env.OWNEREMAIL == jsonData.email) {
+    		next();
+    	} else {
+    		console.log('Only owner can update data');
+    		res.redirect('/error');
+    	}
     }, (error) => {
-        console.log('Error! ', error.message);
         res.redirect('/error');
     });
 

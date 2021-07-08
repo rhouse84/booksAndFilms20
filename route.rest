@@ -1,0 +1,34 @@
+GET http://localhost:3007/api/authors
+
+###
+
+GET http://localhost:3007/api/authors/60e739eac031c24ddaf85a98
+
+###
+
+POST http://localhost:3007/api/authors
+Content-Type: application/json
+
+{
+    "oldId": "4",
+    "name": "Biff Wellington",
+    "namelc": "biff wellington",
+    "userId": 1
+}
+
+###
+GET http://localhost:3007/api/authorSearch/House
+
+###
+
+PUT http://localhost:3007/api/authors/60e73bdc80e5ed4ef1c15592
+Content-Type: application/json
+
+{
+    "name": "Kimberly Houseman"
+}
+
+### 
+
+DELETE http://localhost:3007/api/authors/60e747002d8dbf55fb4c2b64
+
